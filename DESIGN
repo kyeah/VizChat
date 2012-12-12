@@ -1,0 +1,114 @@
+AVATAR: THE GAME: starring the Blue Man Group
+
+Directed by:
+  Hamilton Sands
+  Kevin Yeh
+  Tanjhid Choudhury
+
+------------------------------------
+
+<DW>
+Approved
+Please flesh out the timeline more.
+</DW>
+
+------------------------------------
+
+This program will be an interactive chat room where each player has their own avatar and moves to different rooms to chat.
+
+Rooms are essentially arrays of sprites stored on the main TCP server. Player spaces will read these components through a subserver, then draw them on the screen.
+The player spaces will then send events and keystates so that the subserver may update the components.
+
+In the rooms the avatars can chat and their messages are shown only to the players in the room and a chat log visible at the bottom of the screen.
+This chat log will be implemented using a multicast UDP server forked off of each player space. They will send messages directly to each other.
+
+The avatars themselves can jump and interact with one another and people can join the game by opening a player space on their computer.
+
+//NOTE: Due to the constraints of SDL 1.2, multiple windows are not possible. Therefore, players can only see the room they are currently in.
+
+------------------------------------
+
+Libraries:
+the standard ones
+SDL 1.2
+ 
+------------------------------------
+
+Class Concepts:
+  Memory Allocation of sprite arrays and the rooms that hold them
+
+  Signals: Cleaning up with SIGINT
+
+  Select: Receiving data from multiple sources
+
+  Shared memory: Sharing components between subservers.
+
+  Semaphores: Sharing over subservers (Room components)
+  	      Sharing over threads (player_space main thread <-> chatserver thread)
+
+  Networking and Forking:
+   :::Forking for the TCP subserver (Sending sprites and Receiving inputs)
+   :::Multithreading for the Multicast UDP socket (Sending/Receiving messages)
+
+------------------------------------
+
+Team Breakdown:
+  Kevin Yeh: TEAM LEADER! 
+    - Networking (TCP main/subservers and the multicast UDP server)
+    - Creating / Updating Sprites
+    - Basic input listening
+    
+  Tanjhid Choudhury: TEAM COMPLICATE THINGS GUY!
+    - Collisions (including edge-of-screen happenings)
+    - More input listening (player interactions, ROCKETS!)
+    - Animations
+    
+  Hamilton Sands: TEAM IDEA COME-UPPER!
+    - Semaphores and Shared Memory
+    - More input listening (player interactions, ROCKETS!)
+    - Animations
+
+------------------------------------
+
+Compiled Files:
+  Player <IP Address> : Initiates a player connection with the server at <IP Address> and opens the window
+  Server : Initiates a server to handle rooms and update their components 
+           (up to 10 rooms supported, with up to 10 of each [platforms, players, rockets] in each room, though only players are supported right now)
+
+------------------------------------
+
+Working Files:
+
+init.c (this is the server file)
+    -maintains an array of "rooms" and creates new rooms when asked politely.
+    -updates sprites out of the players' control (platforms, rockets?)
+
+player_space.c
+    -Creates a new thread to handle the chatserver (sending/receiving messages)
+    -Creates a new player and listens to input
+    -A message is sent out to the server at every pass, holding event and keystate information
+
+input.c
+    -Handles input
+     -ENTER: text bubble and chat log
+     -A/D: Move left/right
+     -SPACE: Jump
+     -W: Jump (or jetpack if time allows)
+     -Mouse Release: ROCKETS
+
+    -Handles Collisions
+     -moving to the edge of one room will transition you to the next room
+
+sprite.c
+    - Handles creation and updating of sprites
+
+more ideas: health bars for impromptu rocket battles
+
+-------------------------------------
+
+Timeline:
+        Jan 3 : Design doc
+        Sunday, Jan 8: Working: Avatar movement, room creation, support for one room
+        Sunday, Jan 15: Working: Networking, support for multiple rooms, collisions
+        Sunday, Jan 23: Chat system
+        Deadline: Animations

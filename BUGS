@@ -1,0 +1,39 @@
+BUGS:
+
+REALLY SLOW NETWORK. 
+- Have to increase the player's velocity per cycle, so the movement is not very smooth.
+- Entering a message may take a long, long time.
+- Closing the window may take a few seconds if there are a lot of events in the queue.
+
+----------------------------------------------------------
+
+=================VERY IMPORTANT===================
+
+
+PLAYERS CANNOT SEE EACH OTHER
+- ...this may be a bit of a problem. However, the chat system works perfectly!! :)
+
+ADDING ANOTHER ROOM AFTER A PLAYER HAS JOINED WILL CAUSE THAT PLAYER'S WINDOW TO FREEZE IF THEY TRY TO ACCESS THAT ROOM
+- From debugging, it seems that the player is told to read 4 Sprites instead of 1, and therefore blocks on reading from the subserver for those last three sprites.
+
+
+WHY (both of these):
+Probably due to committing the array of Rooms to shared memory, but not the component arrays that they hold or the sprites that those arrays hold. This is pretty much unfixable at this point, as we would have to remove Rooms completely and change addSprite to create a Sprite directly in the shared memory location (which would be Sprite** -- Arrays (rooms) of sprite arrays (components) )
+
+Again, however, players can still join the server and use the chat system or move through the rooms -- but they will have LOCAL component arrays, and therefore will not be able to see each other.
+
+=================VERY IMPORTANT===================
+
+----------------------------------------------------------
+
+CHANGING THE WINDOW CAPTION AFTER ROOM CHANGE DOES NOT TAKE AFFECT UNTIL THE WINDOW IS NO LONGER THE TOP WINDOW (very strange)
+
+--------------------------------------------------------
+
+SDL_ENABLEKEYREPEAT DOES NOT SEEM TO WORK
+- Makes it hard to type without duplicate characters.
+
+-------------------------------------------------------
+
+COLLISIONS DO NOT CHECK SPECIFIC CASES
+- If a player is on top of another, they cannot move until the other player moves away (this is assuming we get multiple players to join a room correctly...)
