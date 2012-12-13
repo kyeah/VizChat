@@ -6,14 +6,10 @@ Figure out how to do text bubbles (not the actual log, but having bubbles follow
 3)
 Create rooms and send them to the server when a client connects, instead of creating in the server itself.
 This is the ONLY way for platform sprites to be placed in the room conveniently.
-FOR: Whoever. this is not very hard, but you have to understand the network in order to send and add correctly.
 
 4)
 ***** graphicafize everything *****
 AKA Clip sprite sheets for animations (and make actual graphics...)
-FOR: TEAM EFFORT
-
-animation	-t
 
 7)
 ROCKETS!
