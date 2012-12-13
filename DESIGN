@@ -1,9 +1,6 @@
 AVATAR: THE GAME: starring the Blue Man Group
 
-Directed by:
-  Hamilton Sands
-  Kevin Yeh
-  Tanjhid Choudhury
+Directed by: Kevin Yeh
 
 ------------------------------------
 
@@ -49,24 +46,6 @@ Class Concepts:
   Networking and Forking:
    :::Forking for the TCP subserver (Sending sprites and Receiving inputs)
    :::Multithreading for the Multicast UDP socket (Sending/Receiving messages)
-
-------------------------------------
-
-Team Breakdown:
-  Kevin Yeh: TEAM LEADER! 
-    - Networking (TCP main/subservers and the multicast UDP server)
-    - Creating / Updating Sprites
-    - Basic input listening
-    
-  Tanjhid Choudhury: TEAM COMPLICATE THINGS GUY!
-    - Collisions (including edge-of-screen happenings)
-    - More input listening (player interactions, ROCKETS!)
-    - Animations
-    
-  Hamilton Sands: TEAM IDEA COME-UPPER!
-    - Semaphores and Shared Memory
-    - More input listening (player interactions, ROCKETS!)
-    - Animations
 
 ------------------------------------
 
