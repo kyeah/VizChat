@@ -2,7 +2,7 @@ VizChat
 =======
 =======
 
-by Kevin Yeh
+VizChat is a visual instant messaging tool used to chat and interact with your friends.
 
 ------------------------------------
 
