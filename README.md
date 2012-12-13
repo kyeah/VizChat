@@ -4,6 +4,20 @@ VizChat
 
 VizChat is a visual instant messaging tool used to chat and interact with your friends.
 
+Each player has their own avatar and moves to different rooms to chat.
+
+Rooms are essentially arrays of sprites stored on the main TCP server. Player spaces read these components through a subserver, then draw them on the screen.
+The player spaces then send events and keystates so that the subserver may update the components.
+
+Messages sent by players are shown to the players in the room and recorded in a chat log visible at the bottom of the screen.
+The chat network is implemented using a multicast UDP server forked off of each player space. They will send messages directly to each other.
+
+The avatars themselves can jump and interact with one another. Players can join the game by opening a player space on their computer.
+
+    NOTE: Due to the constraints of SDL 1.2, multiple windows are not possible. 
+    Therefore, players can only see the room they are currently in.
+
+
 ------------------------------------
 
 NEEDED:
