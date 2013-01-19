@@ -52,7 +52,7 @@ DOING ACTUAL STUFF:
     4) If you do not know the IP Address of the server computer, please ask your favorite IT technician relative.
     5) If everything was successful, you have a white screen with one or more characters on it. 
 
-Note: Due to shared memory difficulties, we were not able to get players to see each other. However, the chat system still works, as well as moving between rooms. Collisions theoretically work.
+Note: Due to shared memory difficulties, players cannot see each other. However, the chat system still works, as well as room changing. Collisions theoretically work.
   
 --------------------------------------
 
@@ -68,7 +68,7 @@ W: Jetpack (hopefully)
 
 ENTER: Chat
 
-LEFT MOUSE CLICK: Rockets (THERE BETTER BE ROCKETS)
+LEFT MOUSE CLICK: Rockets (THERE BETTER BE ROCKETS) **There are no rockets as of January 2013
 
 ------------------------------------
 
